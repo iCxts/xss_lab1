@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - meowmeowcat92 Academy</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">meowmeowcat92 Academy</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search Courses</a></li>
+            <li><a href="/announcements">Announcements</a></li>
+            <li><a href="/schedule">Class Schedule</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Class Schedule</h1>
+        <div class="day-selector">
+            <a href="#day=monday">Monday</a>
+            <a href="#day=tuesday">Tuesday</a>
+            <a href="#day=wednesday">Wednesday</a>
+            <a href="#day=thursday">Thursday</a>
+            <a href="#day=friday">Friday</a>
+        </div>
+        <!-- This div will be populated by JavaScript -->
+        <div id="schedule-display">
+            <p>Select a day to view the schedule.</p>
+        </div>
+        <div id="student-info">
+            <!-- Student name from URL will appear here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 meowmeowcat92 Academy</p>
+    </footer>
+    <script src="/js/schedule.js"></script>
+</body>
+</html>

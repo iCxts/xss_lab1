@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - meowmeowcat92 Academy</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">meowmeowcat92 Academy</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search Courses</a></li>
+            <li><a href="/announcements">Announcements</a></li>
+            <li><a href="/schedule">Class Schedule</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Announcements</h1>
+
+        <!-- Form to add new announcement -->
+        <div class="post-form">
+            <h2>Post New Announcement</h2>
+            <form action="/announcements" method="POST">
+                <div class="form-group">
+                    <label>Author:</label>
+                    <input type="text" name="author" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea name="message" placeholder="Your announcement" required rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn">Post Announcement</button>
+            </form>
+        </div>
+
+        <!-- Display announcements -->
+        <div class="announcements-list">
+            <h2>Recent Announcements</h2>
+            <% if (announcements.length > 0) { %>
+                <% announcements.forEach(announcement => { %>
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <!-- VULNERABLE: Stored XSS vulnerability -->
+                            <strong><%- announcement.author %></strong>
+                            <span class="date"><%= announcement.date %></span>
+                        </div>
+                        <div class="announcement-body">
+                            <!-- VULNERABLE: Stored XSS vulnerability -->
+                            <%- announcement.message %>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No announcements yet.</p>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 meowmeowcat92 Academy</p>
+    </footer>
+</body>
+</html>

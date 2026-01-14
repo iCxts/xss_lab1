@@ -20,6 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Home page
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 //reflected
 app.get('/search', (req, res) => {
     const query = req.query.q || '';
@@ -40,7 +45,7 @@ app.get('/search', (req, res) => {
 
 //stored
 app.get('/announcements', (req, res) => {
-    res.render('announcements', { announcements: announccements });
+    res.render('announcements', { announcements: announcements });
 });
 
 app.post('/announcements', (req, res) => {
@@ -48,7 +53,7 @@ app.post('/announcements', (req, res) => {
 
     announcements.push({
         author: author || 'Anonymous',
-        message: message || '',,
+        message: message || '',
         date: new Date().toISOString().split('T')[0]
     });
     res.redirect('/announcements');

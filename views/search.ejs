@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - meowmeowcat92 Academy</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">meowmeowcat92 Academy</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search Courses</a></li>
+            <li><a href="/announcements">Announcements</a></li>
+            <li><a href="/schedule">Class Schedule</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Course Search</h1>
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="q" placeholder="Search for courses..." value="<%= query %>">
+            <button type="submit" class="btn">Search</button>
+        </form>
+        <% if (query) { %>
+            <!-- VULNERABLE: Unescaped output (reflected XSS) -->
+            <div class="search-results">
+                <h2>Search results for: <%- query %></h2>
+                <% if (courses.length > 0) { %>
+                    <div style="background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <% courses.forEach(course => { %>
+                            <div style="padding: 1rem; border-bottom: 1px solid #eee;">
+                                <strong style="color: #3498db;"><%= course.code %></strong>: <%= course.name %>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <p style="background: #fff; padding: 1rem; border-radius: 8px;">No courses found matching your search.</p>
+                <% } %>
+            </div>
+        <% } %>
+    </main>
+    <footer>
+        <p>&copy; 2024 meowmeowcat92 Academy</p>
+    </footer>
+</body>
+</html>
