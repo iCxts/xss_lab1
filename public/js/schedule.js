@@ -1,4 +1,3 @@
-// Fetch and display schedule
 async function loadSchedule() {
     const hash = window.location.hash.substring(1);
     const params = new URLSearchParams(hash);
@@ -8,7 +7,6 @@ async function loadSchedule() {
     const display = document.getElementById('schedule-display');
     const studentInfo = document.getElementById('student-info');
 
-    // VULNERABLE: Using innerHTML with unsanitized input (DOM-based XSS)
     if (student) {
         studentInfo.innerHTML = '<div class="welcome-msg">Welcome, ' + student + '!</div>';
     }
@@ -27,7 +25,6 @@ async function loadSchedule() {
                 html += '</tbody></table>';
                 display.innerHTML = html;
             } else {
-                // VULNERABLE: Day parameter reflected without sanitization
                 display.innerHTML = '<p>No schedule found for: ' + day + '</p>';
             }
         } catch (error) {
@@ -36,6 +33,5 @@ async function loadSchedule() {
     }
 }
 
-// Load on page load and hash change
 window.addEventListener('load', loadSchedule);
 window.addEventListener('hashchange', loadSchedule);

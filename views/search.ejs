@@ -23,7 +23,6 @@
             <button type="submit" class="btn">Search</button>
         </form>
         <% if (query) { %>
-            <!-- VULNERABLE: Unescaped output (reflected XSS) -->
             <div class="search-results">
                 <h2>Search results for: <%- query %></h2>
                 <% if (courses.length > 0) { %>
@@ -40,8 +39,5 @@
             </div>
         <% } %>
     </main>
-    <footer>
-        <p>&copy; 2024 meowmeowcat92 Academy</p>
-    </footer>
 </body>
 </html>
